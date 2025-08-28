@@ -1,0 +1,50 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using WebApp.Data;
+using WebApp.Models;
+
+namespace WebApp.Pages.Book
+{
+    public class EditModel : PageModel
+    {
+        private readonly AppDbContext context;
+
+        public EditModel(AppDbContext context)
+        {
+            this.context = context;
+        }
+        [BindProperty]
+        public Books Books { get; set; } = default!;
+        public async Task<IActionResult> OnGetAsync(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToPage("/.index");
+            }
+            var books = await context.Books.FirstOrDefaultAsync(e => e.BookId == id);
+            if (books == null)
+            {
+                return RedirectToPage("/.index");
+            }
+            else
+            {
+                Books = books;
+                return Page();
+            }
+        }
+
+        public async Task<IAsyncResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return (IAsyncResult)Page();
+            }
+            context.Books.Update(Books);
+            await context.SaveChangesAsync();
+            return (IAsyncResult)RedirectToPage("./Index");
+
+        }
+    }
+
+}

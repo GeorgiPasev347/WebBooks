@@ -1,0 +1,33 @@
+﻿@page
+@model WebApp.Pages.Book.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Delete</h1>
+<dl class="row">
+    <dt class="col-2">
+        @Html.DisplayNameFor(model => model.Books.BookTitle);
+    </dt>
+    <dd class="col-10">
+        @Html.DisplayNameFor(model => model.Books.BookTitle);
+    </dd>
+    <dl class="row">
+        <dt class="col-2">
+            @Html.DisplayNameFor(model => model.Books.BookDescription);
+        </dt>
+        <dd class="col-10">
+            @Html.DisplayNameFor(model => model.Books.BookDescription);
+        </dd>
+        <dl class="row">
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.Books.BookAuthor);
+            </dt>
+            <dd class="col-10">
+                @Html.DisplayNameFor(model => model.Books.BookAuthor);
+            </dd>
+        </dl>
+        <form method="post">
+            <input type="hidden" asp-for="Books.BookId" />
+            <a asp-page="./Index" class="btn btn-danger">Back</a>
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </form>

@@ -1,0 +1,34 @@
+﻿@page
+@model WebApp.Pages.Book.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+<h1>Detail</h1>
+<div>
+    <dl class="row">
+        <dt class="col-2">
+            @Html.DisplayNameFor(model => model.Books.BookTitle);
+        </dt>
+        <dd class="col-10">
+            @Html.DisplayNameFor(model => model.Books.BookTitle);
+        </dd>
+        <dl class="row">
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.Books.BookDescription);
+            </dt>
+            <dd class="col-10">
+                @Html.DisplayNameFor(model => model.Books.BookDescription);
+            </dd>
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.Books.BookAuthor);
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayNameFor(model => model.Books.BookAuthor);
+                </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Index" class="btn btn-danger">Back</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Books.BookId" class="btn btn-primary">Edit</a>
+</div>
